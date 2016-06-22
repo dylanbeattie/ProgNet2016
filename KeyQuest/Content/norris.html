@@ -4,9 +4,19 @@
     <title></title>
     <meta charset="utf-8" />
     <script>
+        
+        $("mything").doSomething(function() {
+            $(this).doSomeOtherThing(function() {
+                $(this).doTheNextThing(function() {
+                    $document.doSomeFourthThing
+                })
+            })
+        })
+
+
         function changeJoke() {
             var req = new XMLHttpRequest();
-            req.open('GET', "/chuck", false);
+            req.open('GET', "/chuck");
             req.onload = function () {
                 // This is called even on 404 etc
                 // so check the status

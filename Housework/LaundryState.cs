@@ -3,6 +3,7 @@
         Dirty,
         Wet,
         Dry,
-        PutAway
+        PutAway,
+        OnFire
     }
 }

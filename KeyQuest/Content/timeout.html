@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+        function tickerTape(message, callback) {
+            if (message.length > 0) {
+                document.getElementById("output").innerHTML += message[0];
+                window.setTimeout(function () {
+                    tickerTape(message.substring(1), callback);
+                },
+                    200);
+            } else {
+                callback();
+            }
+        }
+
+    </script>
+    <style>
+        html {
+            color: #0f0;
+            background-color: #000;
+            font-family: Consolas, courier, monospaced;
+        }
+
+        p#output {
+            font-size: 150%;
+        }
+    </style>
+</head>
+<body>
+    <p id="output"></p>
+    <script type="text/javascript">
+
+        tickerTape("Hello ProgNet!", function () {
+            alert("Yay JavaScript!");
+        });
+    </script>
+</body>
+</html>

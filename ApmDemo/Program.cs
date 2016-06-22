@@ -12,6 +12,7 @@ using System.Net.Sockets;
 namespace ApmDemo {
     public class Program {
         public static void Main(string[] args) {
+            Console.ReadKey(false);
             var hostname = "www.skillsmatter.com";
             // Make sure the caller supplied a host name.
             // Start the asynchronous request for DNS information.

@@ -105,6 +105,7 @@
     <Content Include="Content\keyquest.js" />
     <Content Include="Content\nancy-logo.png" />
     <Content Include="Content\keyquest.html" />
+    <Content Include="Content\timeout.html" />
     <Content Include="Content\teletype.html" />
     <Content Include="icon.png" />
     <Content Include="Views\index.html" />

@@ -48,8 +48,34 @@ function questify(url, elementId) {
 
 function runQuest() {
     //TODO: extend this runQuest method to complete all three quests and retrieve all three keys.
-    var quest = questify("/wizard", "ctrl-div");
+    var talkToTheKnight = questify("/knight", "ctrl-div");
+    var talkToTheWizard = questify("/wizard", "ctrl-div");
+    var talkToTheWeaver = questify("/weaver", "ctrl-div");
+    var talkToTheCleric = questify("/cleric", "alt-div");
+    var talkToTheKeysmith = questify("/keysmith", "alt-div");
+    var talkToTheEarl = questify("/earl", "delete-div");
     var bagOfGold = { name: "Bag of Gold" };
-    quest(bagOfGold)
+    var quests = new Array();
+
+    var controlKeyQuest = talkToTheWeaver()
+        .then(talkToTheKnight)
+        .then(talkToTheWizard);
+    var altKeyQuest = talkToTheKeysmith({ name: "Bag Of Gold" })
+        .then(talkToTheCleric);
+    var deleteKeyQuest = talkToTheEarl({ name: "Diamond of Multiple Inheritance" });
+
+    quests.push(controlKeyQuest, altKeyQuest, deleteKeyQuest);
+
+    Promise.all(quests)
+        .then(function (values) {
+            if (values.length === 3 && values.every(function (e) {
+                return (/key/i.test(e.name));
+            })) {
+                victory("You have saved the kingdom!");
+            } else {
+                gameOver("You need to collect all three keys.");
+            }
+        })
         .catch(gameOver);
+
 }
